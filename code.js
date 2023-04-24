@@ -85,7 +85,7 @@ const buttonsArr = [
   },
   {
     "code": "Tab",
-    "key": {"ru": "", "en": "", "fix": "Backspace", "ruShift": "", "enShift": ""},
+    "key": {"ru": "", "en": "", "fix": "Tab", "ruShift": "", "enShift": ""},
     "keycodeFix": true,
     "type": "change"
   },
@@ -175,7 +175,7 @@ const buttonsArr = [
   },
   {
     "code": "CapsLock",
-    "key": {"ru": "", "en": "", "fix": "CapsLock", "ruShift": "", "enShift": ""},
+    "key": {"ru": "", "en": "", "fix": "Caps Lock", "ruShift": "", "enShift": ""},
     "keycodeFix": true,
     "type": "influence"
   },
