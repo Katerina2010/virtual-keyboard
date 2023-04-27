@@ -29,7 +29,6 @@ class Keyboard {
           keyBtn.innerHTML = btn.key[`${lang}Shift`];
         } else {
           keyBtn.innerHTML = btn.key[lang];
-          console.log(btn.key[lang])
         }
       }
     });
