@@ -35,6 +35,83 @@ class Keyboard {
     });
   }
 
+  pressKeyDown(event) { //нажать клавишу клавиатуры
+    this.textArea.focus();
+    if (event.code === 'CapsLock') {
+      document.getElementById(event.code).classList.toggle("active"); 
+      if (document.getElementById(event.code).classList.contains("active")) {
+        this.adaptation.CapsLock = true;
+        this.updateBtn(this.currentLang);
+      } else {
+        this.adaptation.CapsLock = false;
+        this.updateBtn(this.currentLang);
+      }
+    } else {
+      document.getElementById(event.code).classList.add("active");
+    }
+    if(this.getButton(event.code)) {
+      this.updateBtn(this.currentLang);
+      let button = this.getButton(event.code);
+      if(button.type === "static") {
+        event.preventDefault();
+        this.textArea.focus();
+        if (this.adaptation.Shift || this.adaptation.CapsLock) {
+          this.textArea.setRangeText(`${button.key[`${this.currentLang}Shift`]}`, this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+        } else { 
+          this.textArea.setRangeText(`${button.key[this.currentLang]}`, this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+        }
+      }
+    if (event.code === "Tab") {
+      event.preventDefault();
+      this.textArea.setRangeText('    ', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+    }
+    if (event.code === "Enter") {
+      this.textArea.setRangeText('\n', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+    }
+    if (event.code === "Backspace") {
+      this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+      if (this.textArea.selectionStart === this.textArea.selectionEnd) {
+        this.textArea.setRangeText('', this.textArea.selectionStart - 1, this.textArea.selectionEnd, 'end');
+      }
+    };
+    if (event.code === "Delete") {
+      if (this.textArea.selectionStart === this.textArea.selectionEnd) {
+        this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd + 1, 'end');
+      } else if (this.textArea.selectionStart !== this.textArea.selectionEnd) {
+        this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+      }
+    }
+    if ((event.code === 'ControlLeft' && event.altKey) || (event.code === 'AltLeft' && event.ctrlKey)) {//Alt левый и Ctrl левый
+        this.currentLang = this.currentLang === 'en' ? 'ru' : 'en';
+        localStorage.setItem('lang', this.currentLang);
+        this.updateBtn(this.currentLang);
+        if (this.currentLang === "ru") {
+          document.getElementById('LangSwitch').classList.add("active");
+        } else {
+          document.getElementById('LangSwitch').classList.remove("active");
+        }
+        
+    }
+    if (event.code === "ShiftLeft" || event.code === "ShiftRight" ) {
+        this.adaptation.Shift = true;
+        this.updateBtn(this.currentLang);
+    };
+    if (event.code === "AltLeft" || event.code === "AltRight" ) {
+        event.preventDefault();
+    }
+  }
+  }
+
+  pressKeyUp(event) { //отпустить клавишу клавиатуры
+    if(event.code !== 'CapsLock') {
+      document.getElementById(event.code).classList.remove("active");
+    }
+    if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
+      this.adaptation.Shift = false;
+      this.updateBtn(this.currentLang);
+    };
+  }
+
   initKeyboard() { // отрисовать клаву
     function HTMLBody() {
       const HTML_TEMPLATE = `
