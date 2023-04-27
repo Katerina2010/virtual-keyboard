@@ -12,6 +12,28 @@ class Keyboard {
       Alt: false,
     };
   }
+  getButton(keycode) {//получить кнопку зная код
+    for (let i = 0; i < this.buttons.length; i += 1) {
+      if (this.buttons[i].code === keycode) {
+        return this.buttons[i];
+      }
+    }
+    return false;
+  }
+
+  updateBtn(lang) { //обновлять кнопки
+    Array.from(this.btnArr).forEach((keyBtn) => {
+      const btn = this.getButton(keyBtn.dataset.code);
+      if (btn.type === 'static') {
+        if (this.adaptation.Shift || this.adaptation.CapsLock) {
+          keyBtn.innerHTML = btn.key[`${lang}Shift`];
+        } else {
+          keyBtn.innerHTML = btn.key[lang];
+          console.log(btn.key[lang])
+        }
+      }
+    });
+  }
 
   initKeyboard() { // отрисовать клаву
     function HTMLBody() {
