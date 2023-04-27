@@ -112,6 +112,80 @@ class Keyboard {
     };
   }
 
+  pressClick(event) { //нажата мышь
+    event.preventDefault();
+    this.textArea.focus();
+    let code = event.target.dataset.code;
+    if (code === 'CapsLock') {
+      document.getElementById(code).classList.toggle("active"); 
+      if (document.getElementById(code).classList.contains("active")) {
+        this.adaptation.CapsLock = true;
+        this.updateBtn(this.currentLang);
+      } else {
+        this.adaptation.CapsLock = false;
+        this.updateBtn(this.currentLang);
+      }
+    } else {
+      document.getElementById(code).classList.add("active");
+    }
+    if (code === 'LangSwitch') {
+      this.currentLang = this.currentLang === 'en' ? 'ru' : 'en';
+      localStorage.setItem('lang', this.currentLang);
+      this.updateBtn(this.currentLang);
+      document.getElementById('LangSwitch').classList.remove("active");
+      if (this.currentLang === "ru") {
+        document.getElementById('LangSwitch').classList.add("active");
+      } else {
+        document.getElementById('LangSwitch').classList.remove("active");
+      }
+    }
+    if(this.getButton(code)) {
+      this.updateBtn(this.currentLang);
+      let button = this.getButton(code);
+      if(button.type === "static") {
+        if (this.adaptation.Shift || this.adaptation.CapsLock) {
+          this.textArea.setRangeText(`${button.key[`${this.currentLang}Shift`]}`, this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+        } else { 
+          this.textArea.setRangeText(`${button.key[this.currentLang]}`, this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+        }
+      }
+    }
+    if (code === "Enter") {
+      this.textArea.setRangeText('\n', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+    }
+    if (code === "Tab") {
+      this.textArea.setRangeText('    ', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+    }
+    if (code === "Backspace") {
+      this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+      if (this.textArea.selectionStart === this.textArea.selectionEnd) {
+        this.textArea.setRangeText('', this.textArea.selectionStart - 1, this.textArea.selectionEnd, 'end');
+      }
+    };
+    if (code === "Delete") {
+      if (this.textArea.selectionStart === this.textArea.selectionEnd) {
+        this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd + 1, 'end');
+      } else if (this.textArea.selectionStart !== this.textArea.selectionEnd) {
+        this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+      }
+    }
+    if (code === "ShiftLeft" || code === "ShiftRight") {
+      this.adaptation.Shift = true;
+      this.updateBtn(this.currentLang);
+    };
+  }
+
+  pressClickUp(event) {//отпустить мышь
+    let code = event.target.dataset.code;
+    if(code !== 'CapsLock' && code !== "LangSwitch") {
+      document.getElementById(code).classList.remove("active");
+    }
+    if (code === "ShiftLeft" || code === "ShiftRight") {
+      this.adaptation.Shift = false;
+      this.updateBtn(this.currentLang);
+    };
+  }
+
   initKeyboard() { // отрисовать клаву
     function HTMLBody() {
       const HTML_TEMPLATE = `
