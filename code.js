@@ -319,7 +319,7 @@ const buttonsArr = [
   },
   {
     "code": "ArrowUp",
-    "key": {"ru": "🠕", "en": "🠕", "fix": "", "ruShift": "🠕", "enShift": "🠕"},
+    "key": {"ru": "↑", "en": "↑", "fix": "", "ruShift": "↑", "enShift": "↑"},
     "keycodeFix": false,
     "type": "static"
   },
@@ -361,19 +361,19 @@ const buttonsArr = [
   },
   {
     "code": "ArrowLeft",
-    "key": {"ru": "🠔", "en": "🠔", "fix": "", "ruShift": "🠔", "enShift": "🠔"},
+    "key": {"ru": "←", "en": "←", "fix": "", "ruShift": "←", "enShift": "←"},
     "keycodeFix": false,
     "type": "static"
   },
   {
     "code": "ArrowDown",
-    "key": {"ru": "🠗", "en": "🠗", "fix": "", "ruShift": "🠗", "enShift": "🠗"},
+    "key": {"ru": "↓", "en": "↓", "fix": "", "ruShift": "↓", "enShift": "↓"},
     "keycodeFix": false,
     "type": "static"
   },
   {
     "code": "ArrowRight",
-    "key": {"ru": "🠖", "en": "🠖", "fix": "", "ruShift": "🠖", "enShift": "🠖"},
+    "key": {"ru": "→", "en": "→", "fix": "", "ruShift": "→", "enShift": "→"},
     "keycodeFix": false,
     "type": "static"
   },
