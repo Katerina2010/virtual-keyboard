@@ -85,7 +85,7 @@ const buttonsArr = [
   },
   {
     "code": "Tab",
-    "key": {"ru": "", "en": "", "fix": "Tab", "ruShift": "", "enShift": ""},
+    "key": {"ru": "", "en": "", "fix": "Tab ⇄", "ruShift": "", "enShift": ""},
     "keycodeFix": true,
     "type": "change"
   },
@@ -247,7 +247,7 @@ const buttonsArr = [
   },
   {
     "code": "Enter",
-    "key": {"ru": "", "en": "", "fix": "Enter", "ruShift": "", "enShift": ""},
+    "key": {"ru": "", "en": "", "fix": "Enter ⤶", "ruShift": "", "enShift": ""},
     "keycodeFix": true,
     "type": "change"
   },
@@ -319,9 +319,9 @@ const buttonsArr = [
   },
   {
     "code": "ArrowUp",
-    "key": {"ru": "", "en": "", "fix": "↑", "ruShift": "", "enShift": ""},
-    "keycodeFix": true,
-    "type": "arrow"
+    "key": {"ru": "🠕", "en": "🠕", "fix": "", "ruShift": "🠕", "enShift": "🠕"},
+    "keycodeFix": false,
+    "type": "static"
   },
   {
     "code": "ShiftRight",
@@ -336,10 +336,10 @@ const buttonsArr = [
     "type": "influence"
   },
   {
-    "code": "MetaLeft",
-    "key": {"ru": "", "en": "", "fix": "Win", "ruShift": "", "enShift": ""},
+    "code": "LangSwitch",
+    "key": {"ru": "", "en": "", "fix": "🌐", "ruShift": "", "enShift": ""},
     "keycodeFix": true,
-    "type": "static"
+    "type": "influence"
   },
   {
     "code": "AltLeft",
@@ -357,31 +357,31 @@ const buttonsArr = [
     "code": "AltRight",
     "key": {"ru": "", "en": "", "fix": "Alt", "ruShift": "", "enShift": ""},
     "keycodeFix": true,
-    "type": "static"
+    "type": "influence"
   },
   {
     "code": "ArrowLeft",
-    "key": {"ru": "", "en": "", "fix": "←", "ruShift": "", "enShift": ""},
-    "keycodeFix": true,
-    "type": "arrow"
+    "key": {"ru": "🠔", "en": "🠔", "fix": "", "ruShift": "🠔", "enShift": "🠔"},
+    "keycodeFix": false,
+    "type": "static"
   },
   {
     "code": "ArrowDown",
-    "key": {"ru": "", "en": "", "fix": "↓", "ruShift": "", "enShift": ""},
-    "keycodeFix": true,
-    "type": "arrow"
+    "key": {"ru": "🠗", "en": "🠗", "fix": "", "ruShift": "🠗", "enShift": "🠗"},
+    "keycodeFix": false,
+    "type": "static"
   },
   {
     "code": "ArrowRight",
-    "key": {"ru": "", "en": "", "fix": "→", "ruShift": "", "enShift": ""},
-    "keycodeFix": true,
-    "type": "arrow"
+    "key": {"ru": "🠖", "en": "🠖", "fix": "", "ruShift": "🠖", "enShift": "🠖"},
+    "keycodeFix": false,
+    "type": "static"
   },
   {
     "code": "ControlRight",
     "key": {"ru": "", "en": "", "fix": "Ctrl", "ruShift": "", "enShift": ""},
     "keycodeFix": true,
-    "type": "static"
+    "type": "influence"
   },
 ];
 
