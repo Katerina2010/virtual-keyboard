@@ -60,27 +60,30 @@ class Keyboard {
           this.textArea.setRangeText(`${button.key[this.currentLang]}`, this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
         }
       }
-    if (event.code === "Tab") {
-      event.preventDefault();
-      this.textArea.setRangeText('    ', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
-    }
-    if (event.code === "Enter") {
-      this.textArea.setRangeText('\n', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
-    }
-    if (event.code === "Backspace") {
-      this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
-      if (this.textArea.selectionStart === this.textArea.selectionEnd) {
-        this.textArea.setRangeText('', this.textArea.selectionStart - 1, this.textArea.selectionEnd, 'end');
+      if (event.code === "Tab") {
+        event.preventDefault();
+        this.textArea.setRangeText('    ', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
       }
-    };
-    if (event.code === "Delete") {
-      if (this.textArea.selectionStart === this.textArea.selectionEnd) {
-        this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd + 1, 'end');
-      } else if (this.textArea.selectionStart !== this.textArea.selectionEnd) {
+      if (event.code === "Enter") {
+        event.preventDefault();
+        this.textArea.setRangeText('\n', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+      }
+      if (event.code === "Backspace") {
+        event.preventDefault();
         this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+        if (this.textArea.selectionStart === this.textArea.selectionEnd) {
+          this.textArea.setRangeText('', this.textArea.selectionStart - 1, this.textArea.selectionEnd, 'end');
+        }
       }
-    }
-    if ((event.code === 'ControlLeft' && event.altKey) || (event.code === 'AltLeft' && event.ctrlKey)) {//Alt левый и Ctrl левый
+      if (event.code === "Delete") {
+        event.preventDefault();
+        if (this.textArea.selectionStart === this.textArea.selectionEnd) {
+          this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd + 1, 'end');
+        } else if (this.textArea.selectionStart !== this.textArea.selectionEnd) {
+          this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
+        }
+      }
+      if ((event.code === 'ControlLeft' && event.altKey) || (event.code === 'AltLeft' && event.ctrlKey)) {//Alt левый и Ctrl левый
         this.currentLang = this.currentLang === 'en' ? 'ru' : 'en';
         localStorage.setItem('lang', this.currentLang);
         this.updateBtn(this.currentLang);
@@ -89,16 +92,15 @@ class Keyboard {
         } else {
           document.getElementById('LangSwitch').classList.remove("active");
         }
-        
-    }
-    if (event.code === "ShiftLeft" || event.code === "ShiftRight" ) {
+      }
+      if (event.code === "ShiftLeft" || event.code === "ShiftRight" ) {
         this.adaptation.Shift = true;
         this.updateBtn(this.currentLang);
-    };
-    if (event.code === "AltLeft" || event.code === "AltRight" ) {
+      };
+      if (event.code === "AltLeft" || event.code === "AltRight" ) {
         event.preventDefault();
+      }
     }
-  }
   }
 
   pressKeyUp(event) { //отпустить клавишу клавиатуры
@@ -171,7 +173,7 @@ class Keyboard {
     if (code === "ShiftLeft" || code === "ShiftRight") {
       this.adaptation.Shift = true;
       this.updateBtn(this.currentLang);
-    };
+    }
   }
 
   pressClickUp(event) {//отпустить мышь
