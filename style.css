@@ -22,6 +22,7 @@ html,body{
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
+  background-color: rgba(255, 235, 205);
     
 }
 input,button,textarea{font-family:inherit;}
@@ -36,9 +37,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;}
 
 
 .body {
-  font-style: italic;
+  font-style: normal;
   margin: 0 auto;
-  background-color: blanchedalmond;
   max-width: 1200px;
 }
 
@@ -48,7 +48,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;}
   justify-content: center;
   align-items: center;
   width: 100%;
-  /*height: 40px;*/
 }
 
 .title {
@@ -65,11 +64,13 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;}
 }
 .area-text {
   width: 100%;
-  /*height: 150px;*/
-  border: 2px solid black;
   padding: 10px;
   border-radius: 5px;
   font-size: 22px;
+  box-shadow: inset -2px 0 2px rgba(10, 5, 5, 0.15),/*тень*/
+  inset 0 -2px 2px rgba(0,0,0,0.25),
+  0 0 0 2px rgba(0,0,0,0.75),
+  2px 5px 7px rgba(0,0,0,0.4);
 }
 
 .keyboard {
@@ -139,6 +140,10 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;}
   width: 390px;
 }
 
+#LangSwitch {
+  font-size: 20px;
+}
+
 .key {
   cursor: pointer;
   display: flex;
@@ -147,21 +152,22 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;}
   font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   font-size: 16px;
-  position: relative;/*относительное позиционирование*/
-  /*display: inline-block;*//*отображать как строчно-блочный элемент*/
-  width: 50px;/*ширина клавиши*/
-  height: 50px;/*высота клавиши*/
-  /*padding: 8px 15px;*//*поля для текста*/
-  margin: 6px 4px;/*отступы от клавишей*/
-  border-radius: 7px;/*закругления*/
-  background: linear-gradient(180deg,#282828,#202020);/*линейный градиент*/
-  box-shadow: inset -8px 0 8px rgba(10, 5, 5, 0.15),/*тень*/
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 6px 4px;
+  border-radius: 7px;
+  background: linear-gradient(180deg,#282828,#202020);
+  box-shadow: inset -8px 0 8px rgba(10, 5, 5, 0.15),
   inset 0 -8px 8px rgba(0,0,0,0.25),
   0 0 0 2px rgba(0,0,0,0.75),
   10px 20px 25px rgba(0,0,0,0.4);
   overflow: hidden;
   color: white;
+}
 
+.key:hover {
+background: rgb(40, 40, 40);
 }
 
 .info {
@@ -178,7 +184,10 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;}
  font-weight: 400;
 }
 
-.active {
-  background-color: aquamarine;
+.active:hover {
+  background: rgba(234, 238, 239, 0.498);
 }
 
+.active {
+  background: rgba(234, 238, 239, 0.498);
+}
