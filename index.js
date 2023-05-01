@@ -191,7 +191,7 @@ class Keyboard {
         this.textArea.setRangeText('', this.textArea.selectionStart, this.textArea.selectionEnd, 'end');
       }
     }
-    if (code === "ShiftLeft" || code === "ShiftRight") {
+    if (code === "ShiftLeft"  || code === "ShiftRight" ) {
       document.getElementById(code).classList.add("active");
       this.adaptation.Shift = true;
       this.updateBtn(this.currentLang);
@@ -203,13 +203,20 @@ class Keyboard {
 
   pressClickUp(event) {//отпустить мышь
     let code = event.target.dataset.code;
-    if(code !== 'CapsLock' && code !== "LangSwitch") {
+    let button = this.getButton(code);
+    if(button.type === "static") {document.getElementById(code).classList.remove("active");}
+    if (code === "Enter") {document.getElementById(code).classList.remove("active");}
+    if (code === "Tab") {document.getElementById(code).classList.remove("active");}
+    if (code === "Backspace") {document.getElementById(code).classList.remove("active");};
+    if (code === "Delete") {document.getElementById(code).classList.remove("active");}
+    if (code === "ShiftLeft"  || code === "ShiftRight" ) {
       document.getElementById(code).classList.remove("active");
-    }
-    if (code === "ShiftLeft" || code === "ShiftRight") {
       this.adaptation.Shift = false;
       this.updateBtn(this.currentLang);
-    };
+    }
+    if (code === "AltLeft" || code === "AltRight" || code === 'ControlRight' || code === "ControlLeft") {
+      document.getElementById(code).classList.remove("active");
+    }
   }
 
   initKeyboard() { // отрисовать клаву
@@ -277,7 +284,6 @@ class Keyboard {
     window.addEventListener("keydown", this.pressKeyDown.bind(this));
     window.addEventListener("keyup", this.pressKeyUp.bind(this));
   }
- 
 }
 
 const virtualKeyboard = new Keyboard(buttonsArr);
